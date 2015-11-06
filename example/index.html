@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>stylefix.js example</title>
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <div></div>
+    <style scoped>
+        div {
+            height: 50vh;
+            background: hotpink;
+        }
+    </style>
+
+    <script src="../build/stylefix.js"></script>
+    <script>
+        styleFix.registerFixer(function(css) {
+            var w = innerWidth;
+            var h = innerHeight;
+            var m = Math.min(w,h);
+            var units = ['vw', 'vh', 'vm'];
+
+            return css.replace(new RegExp('\\b(\\d+)(' + units.join('|') + ')\\b', 'gi'), function($0, num, unit) {
+                console.log(css);
+
+                switch (unit) {
+                    case 'vw':
+                        return (num * w / 100) + 'px';
+                    case 'vh':
+                        return num * h / 100 + 'px';
+                    case 'vm':
+                        return num * m / 100 + 'px';
+                }
+            });
+        });
+        styleFix.fix();
+    </script>
+</body>
+</html>

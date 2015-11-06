@@ -1,0 +1,28 @@
+{
+  "name": "stylefix.js",
+  "version": "1.0.0",
+  "description": "Remove indentation from `textarea` and `contenteditable` elements",
+  "main": "build/stylefix.js",
+  "scripts": {
+    "build": "browserify ./src/stylefix.js -s styleFix > build/stylefix.js && ccjs build/stylefix.js > build/stylefix.min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tzi/stylefix.js.git"
+  },
+  "keywords": [
+    "indentation",
+    "textarea"
+  ],
+  "author": "Thomas ZILLIOX (http://tzi.fr)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tzi/stylefix.js/issues"
+  },
+  "homepage": "https://github.com/tzi/stylefix.js#readme",
+  "devDependencies": {
+    "browserify": "9.0.3",
+    "closurecompiler": "1.5.1"
+  }
+}
